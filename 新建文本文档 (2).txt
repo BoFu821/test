@@ -1,0 +1,22 @@
+select sys_guid(),
+       rownum,
+       budget_year,
+       budget_month,
+       dept_code,
+       org_budget_code,
+       org_code,
+       capital_type,
+       budget_type,
+       budget_account,
+       inc_exp_type,
+       bsi_code,
+       bp_name,--add 指标文号名称
+       bl_code,--add 指标来源编码
+       ba_name,--add 指标用途名称
+       budget_amount,
+       plan_dir_amount,
+       plan_auth_amount,
+       pay_dir_amount,
+       pay_auth_amount,
+       creation_date
+  from cux_budget_process_uf@DBLINK_PAY where budget_year||budget_month=to_number(to_char(add_months(sysdate,-2),'YYYYMM'));
